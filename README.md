@@ -4,6 +4,7 @@
 #http://127.0.0.1:5000/library/books/ISBN/details
 #http://127.0.0.1:5000/library/books/ISBN/cover
 #http://127.0.0.1:5000/library/books/ISBN/cover?size=L
+#You can also use a get request using postman/your service to the same links
 
 from flask import Flask, jsonify, request, redirect, Blueprint
 import requests
