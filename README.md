@@ -5,7 +5,7 @@ import requests
 
 app = Flask(__name__)
 
-# Create a blueprint with 'CS361 Library' as the URL prefix
+#Create a blueprint with 'CS361 Library' as the URL prefix
 library_bp = Blueprint('CS361 Library', __name__, url_prefix='/library')
 
 @library_bp.route('/books/<isbn>', methods=['GET'])
@@ -52,7 +52,7 @@ def get_book_details(isbn):
     else:
         return jsonify({"error": "Book not found"}), 404
 
-# Register the blueprint with the Flask application
+#Register the blueprint with the Flask application
 app.register_blueprint(library_bp)
 
 if __name__ == '__main__':
