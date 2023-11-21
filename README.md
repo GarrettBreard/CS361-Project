@@ -1,4 +1,9 @@
 #Microservice Code
+#To call the data run the file and use one of the following links to return data(replace ISBN with 13 digit isbn)
+#http://127.0.0.1:5000/library/books/ISBN
+#http://127.0.0.1:5000/library/books/ISBN/details
+#http://127.0.0.1:5000/library/books/ISBN/cover
+#http://127.0.0.1:5000/library/books/ISBN/cover?size=L
 
 from flask import Flask, jsonify, request, redirect, Blueprint
 import requests
