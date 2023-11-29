@@ -28,7 +28,6 @@ def get_book_by_isbn(isbn):
 def get_book_cover(isbn):
     size = request.args.get('size', 'M')  # Default to medium size
     cover_url = f'http://covers.openlibrary.org/b/isbn/{isbn}-{size}.jpg?default=false'
-
     cover_response = requests.get(cover_url)
     if cover_response.status_code == 200:
         return (cover_url)
@@ -44,8 +43,7 @@ def get_book_details(isbn):
         description = book_data.get('description', 'No description available')
         if isinstance(description, dict):
             description = description.get('value', description)
-
-        # Fetching author names
+        #Fetching author names
         authors = book_data.get('authors', [])
         author_names = []
         for author in authors:
@@ -55,7 +53,6 @@ def get_book_details(isbn):
                 if author_response.status_code == 200:
                     author_data = author_response.json()
                     author_names.append(author_data.get('name', 'Unknown Author'))
-
         return jsonify({"title": title, "description": description, "authors": author_names})
     else:
         return jsonify({"error": "Book not found"}), 404
