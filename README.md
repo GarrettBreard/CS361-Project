@@ -7,9 +7,11 @@
 #You can also use a get request using postman/your service to the same links
 
 from flask import Flask, jsonify, request, redirect, Blueprint
+from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
+CORS(app)
 
 #Create a blueprint with 'CS361 Library' as the URL prefix
 library_bp = Blueprint('CS361 Library', __name__, url_prefix='/library')
@@ -29,7 +31,7 @@ def get_book_cover(isbn):
 
     cover_response = requests.get(cover_url)
     if cover_response.status_code == 200:
-        return redirect(cover_url)
+        return (cover_url)
     else:
         return jsonify({"error": "Cover not found"}), 404
 
@@ -63,4 +65,5 @@ app.register_blueprint(library_bp)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
